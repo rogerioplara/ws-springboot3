@@ -1,4 +1,4 @@
-package entities;
+package com.estudandoweb.wsspringboot3.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
