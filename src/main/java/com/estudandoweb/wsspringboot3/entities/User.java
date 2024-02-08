@@ -1,8 +1,11 @@
 package com.estudandoweb.wsspringboot3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 // conversão do objeto para o modelo relacional a partir das annotations
@@ -18,6 +21,11 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
+    // associação dos pedidos com o user, mapeado pelo atributo client
+    @JsonIgnore // anotação para não gerar loop na dependência de mão dupla
+    @OneToMany(mappedBy = "client") // essa relação não retorna no json os pedidos, somente o contrário
+    private List<Order> orders = new ArrayList<>();
+
     public User() {
     }
 
@@ -27,6 +35,10 @@ public class User implements Serializable {
         this.email = email;
         this.phone = phone;
         this.password = password;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 
     public Long getId() {
