@@ -1,9 +1,7 @@
 package com.estudandoweb.wsspringboot3.services;
 
 import com.estudandoweb.wsspringboot3.entities.Order;
-import com.estudandoweb.wsspringboot3.entities.User;
 import com.estudandoweb.wsspringboot3.repositories.OrderRepository;
-import com.estudandoweb.wsspringboot3.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

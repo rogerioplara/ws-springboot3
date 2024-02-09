@@ -2,9 +2,11 @@ package com.estudandoweb.wsspringboot3.config;
 
 import com.estudandoweb.wsspringboot3.entities.Category;
 import com.estudandoweb.wsspringboot3.entities.Order;
+import com.estudandoweb.wsspringboot3.entities.Product;
 import com.estudandoweb.wsspringboot3.entities.User;
 import com.estudandoweb.wsspringboot3.enums.OrderStatus;
 import com.estudandoweb.wsspringboot3.repositories.OrderRepository;
+import com.estudandoweb.wsspringboot3.repositories.ProductRepository;
 import com.estudandoweb.wsspringboot3.repositories.UserRepository;
 import com.estudandoweb.wsspringboot3.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
 
     // método para executar o seu conteúdo junto com a aplicação
     @Override
@@ -46,9 +51,16 @@ public class TestConfig implements CommandLineRunner {
         Category cat2 = new Category(null, "Books");
         Category cat3 = new Category(null, "Computers");
 
+        Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+        Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+        Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+        Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+        Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+
         // salva os objetos instanciados como uma lista e insere no banco de dados
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
     }
 }
