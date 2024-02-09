@@ -1,5 +1,6 @@
 package com.estudandoweb.wsspringboot3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ public class Payment implements Serializable {
     private Long id;
     private Instant moment;
 
+    @JsonIgnore // para que não dê loop no pedido
     @OneToOne
     @MapsId // define a classe dependente de outra
     private Order order;
