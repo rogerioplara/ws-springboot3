@@ -1,5 +1,6 @@
 package com.estudandoweb.wsspringboot3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -17,7 +18,9 @@ public class Category implements Serializable {
     private String name;
 
     // associação com os produtos
-    @Transient
+    // referência para o mapeamento feito na classe product
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories")
     private Set<Product> products = new HashSet<>();
 
     public Category() {

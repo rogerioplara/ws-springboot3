@@ -21,7 +21,11 @@ public class Product implements Serializable {
 
     // associação categories - será utilizado o SET para não ter duplicidade de categorias
     // instanciação da coleção não pode valer nulo mas sim vazia
-    @Transient
+    @ManyToMany
+    @JoinTable(name = "tb_product_category",
+        joinColumns = @JoinColumn(name = "product_id"),
+        inverseJoinColumns = @JoinColumn(name = "category_id")
+    ) // faz a associação many to many com a tabela category
     private Set<Category> categories = new HashSet<>();
 
     public Product() {
